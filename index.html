@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ریک مووی | Rick Movie : اپلیکیشن اختصاصی استریم فیلم و سریال</title>
-    <meta name="description" content="ریک مووی (Rick Movie) - نسخه آزمایشی بتا اپلیکیشن استریم فیلم و سریال برای اندروید و تلویزیون هوشمند با تفکیک کیفیت و دوبله، دانلودر مستقل و زیرنویس‌های OnlySub.ir">
+    <title>ریک مووی | Rick Movie : پلتفرم اختصاصی استریم فیلم و سریال</title>
+    <meta name="description" content="ریک مووی (Rick Movie) - اپلیکیشن سینمایی مالتی‌پلتفرم برای اندروید، تلویزیون، مک و ویندوز با تفکیک کیفیت و دوبله، جستجوی پیشرفته بلادرنگ و زیرنویس‌های OnlySub.ir">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -20,9 +20,9 @@
                         brand: {
                             primary: "#7C3AED",
                             accent: "#F76800",
-                            dark: "#0B0C10",
-                            card: "#151821",
-                            border: "#252A38"
+                            dark: "#08090C",
+                            card: "#121522",
+                            border: "#202538"
                         }
                     }
                 }
@@ -39,267 +39,162 @@
             color: #E2E8F0;
             overflow-x: hidden;
         }
-        .glass-panel {
-            background: rgba(21, 24, 33, 0.75);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        .glow-effect {
+            box-shadow: 0 0 50px -10px rgba(124, 58, 237, 0.45);
         }
-        .hero-glow {
-            position: absolute;
-            top: -120px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 700px;
-            height: 450px;
-            background: radial-gradient(circle, rgba(124, 58, 237, 0.28) 0%, rgba(247, 104, 0, 0.12) 50%, rgba(0, 0, 0, 0) 70%);
-            filter: blur(80px);
-            pointer-events: none;
-            z-index: 0;
+        .glow-accent {
+            box-shadow: 0 0 35px -8px rgba(247, 104, 0, 0.45);
+        }
+        .glass-nav {
+            background: rgba(14, 17, 26, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-brand-primary selection:text-white">
+<body class="selection:bg-purple-600 selection:text-white">
 
-    <div class="hero-glow"></div>
-
-    <!-- Header / Navbar -->
-    <header class="sticky top-0 z-50 glass-panel border-b border-brand-border/60">
-        <div class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between">
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-primary to-brand-accent flex items-center justify-center shadow-lg shadow-brand-primary/25">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                </div>
+                <img src="logo.png" alt="Rick Movie Logo" class="w-12 h-12 rounded-2xl shadow-lg border border-purple-500/30">
                 <div>
-                    <h1 class="text-xl font-black text-white tracking-wide">ریک مووی <span class="text-xs font-bold text-brand-accent bg-brand-accent/15 px-2 py-0.5 rounded-md me-1">Beta 2.0</span></h1>
-                    <p class="text-xs text-slate-400">Rick Movie : نسخه اختصاصی</p>
+                    <h1 class="text-xl font-black text-white tracking-tight flex items-center gap-2">
+                        <span>ریک مووی</span>
+                        <span class="text-xs px-2 py-0.5 rounded-md bg-purple-600/30 text-purple-300 font-bold border border-purple-500/40">نسخه بتا</span>
+                    </h1>
+                    <p class="text-xs text-slate-400 font-medium">Rick Movie Multi-Platform</p>
                 </div>
             </div>
 
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-                <a href="#features" class="hover:text-brand-accent transition">ویژگی‌های پلیر</a>
-                <a href="#subtitles" class="hover:text-brand-accent transition">زیرنویس OnlySub</a>
-                <a href="#tv" class="hover:text-brand-accent transition">اندروید تی‌وی</a>
-                <a href="#creator" class="hover:text-brand-accent transition">درباره سازنده</a>
-            </nav>
-
-            <div>
-                <a href="https://github.com/m4tinbeigi-official/rickmovie-app/releases/download/v2.0.0-beta/RickMovie-universal.apk" class="inline-flex items-center gap-2 bg-gradient-to-r from-brand-primary to-purple-600 hover:from-purple-600 hover:to-brand-primary text-white text-sm font-bold px-5 py-2.5 rounded-xl transition shadow-lg shadow-brand-primary/30">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                    <span>دریافت نسخه بتا</span>
+            <div class="flex items-center gap-4">
+                <a href="#downloads" class="px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm transition shadow-lg shadow-purple-600/30">
+                    دانلود برنامه
                 </a>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <main class="relative z-10 flex-1">
-        <section class="max-w-5xl mx-auto px-4 pt-16 pb-20 text-center">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-xs text-slate-300 mb-6">
+    <section class="pt-36 pb-20 px-6 relative overflow-hidden">
+        <div class="absolute -top-40 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-20 left-1/4 w-96 h-96 bg-orange-600/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-card border border-brand-border text-xs text-slate-300 font-semibold mb-8">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>نسخه آزمایشی بتا (Beta 2.0.0) : توسعه منحصراً توسط ریک سانچز</span>
+                <span>استریم پرسرعت بدون سانسور و نیم‌بها روی تمامی پلتفرم‌ها</span>
             </div>
 
-            <h2 class="text-4xl sm:text-6xl font-black text-white leading-tight mb-6">
-                تجربه سینمایی بی‌نقص در <span class="text-transparent bg-clip-text bg-gradient-to-l from-brand-primary via-purple-400 to-brand-accent">ریک مووی</span>
+            <h2 class="text-4xl md:text-6xl font-black text-white leading-tight mb-6">
+                سینمای جهان در دستان شما با <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-300 to-orange-400">ریک مووی (Rick Movie)</span>
             </h2>
 
-            <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-300 leading-relaxed mb-10">
-                پلتفرم و اپلیکیشن اختصاصی استریم و تماشای فیلم و سریال برای موبایل و تلویزیون‌های هوشمند (Android TV) با تفکیک دوبله و زیرنویس به سبک زرفیلم، دانلودر مستقل و اتصال به شبکه زیرنویس‌های تمیز OnlySub.ir.
+            <p class="text-base md:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed mb-10 font-normal">
+                پلتفرم اختصاصی پخش و دانلود نامحدود فیلم و سریال با تفکیک هوشمند کیفیت‌ها و دوبله اختصاصی، موتور جستجوی بلادرنگ، یکپارچه با زیرنویس‌های آنلی‌ساب و سازگار با اندروید، مک و ویندوز.
             </p>
 
-            <div class="flex flex-wrap items-center justify-center gap-4">
-                <a href="https://github.com/m4tinbeigi-official/rickmovie-app/releases/download/v2.0.0-beta/RickMovie-universal.apk" class="inline-flex items-center gap-3 bg-brand-primary hover:bg-purple-700 text-white font-extrabold px-8 py-4 rounded-2xl text-base shadow-xl shadow-brand-primary/35 transition transform hover:-translate-y-0.5">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0001 0-.5515.4482-1.0001.9993-1.0001.5516 0 .9998.4486.9998 1.0001 0 .5515-.4482 1.0001-.9998 1.0001m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0001 0-.5515.4482-1.0001.9993-1.0001.5516 0 .9998.4486.9998 1.0001 0 .5515-.4482 1.0001-.9998 1.0001m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.4116 13.8533 8.125 12 8.125s-3.5902.2866-5.1368.8247L4.8409 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.152 5676l1.9972 3.4592C2.6889 11.1867.3432 14.6589 0 18.7845h24c-.3432-4.1256-2.6889-7.5978-6.1185-9.4631"/></svg>
-                    <span>دانلود مستقیم فایل نصبی (APK)</span>
+            <!-- Download Action Buttons -->
+            <div id="downloads" class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto mb-14">
+                <!-- Android Download -->
+                <a href="https://github.com/m4tinbeigi-official/rickmovie-app/releases/download/v2.0.0-beta/RickMovie-universal.apk" class="p-4 rounded-2xl bg-gradient-to-b from-purple-600 to-purple-800 text-white font-bold text-center border border-purple-400/40 shadow-xl shadow-purple-900/40 hover:scale-[1.02] transition">
+                    <div class="text-xs text-purple-200 mb-1">موبایل و تلویزیون</div>
+                    <div class="text-base font-extrabold flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.551 0 .9993.4482.9993.9993.0001.5511-.4483.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.4126 13.8533 8.0818 12 8.0818s-3.5902.3308-5.1367.8682L4.841 5.447a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3432-4.1021-2.6889-7.5743-6.1185-9.4396"/></svg>
+                        <span>دانلود اندروید (APK)</span>
+                    </div>
+                    <div class="text-[11px] text-purple-200 mt-1">نسخه 2.0.0 بتا (۶.۳ مگابایت)</div>
                 </a>
 
-                <a href="#features" class="inline-flex items-center gap-2 bg-slate-800/90 hover:bg-slate-700/90 border border-slate-700 text-slate-200 font-bold px-7 py-4 rounded-2xl text-base transition">
-                    <span>بررسی امکانات و کیفیت‌ها</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                <!-- macOS Download -->
+                <a href="#desktop" class="p-4 rounded-2xl bg-brand-card hover:bg-slate-800/80 text-white font-bold text-center border border-brand-border hover:border-purple-500/50 transition hover:scale-[1.02]">
+                    <div class="text-xs text-slate-400 mb-1">سیستم‌عامل مک</div>
+                    <div class="text-base font-extrabold flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5 text-slate-200" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.75 1.04-1.8 0.92-2.85-.9.04-2 .6-2.64 1.34-.56.64-1.05 1.71-.92 2.73 1.01.08 2.02-.47 2.64-1.22z"/></svg>
+                        <span>دانلود نسخه مک (DMG)</span>
+                    </div>
+                    <div class="text-[11px] text-slate-400 mt-1">Apple Silicon & Intel</div>
+                </a>
+
+                <!-- Windows Download -->
+                <a href="#desktop" class="p-4 rounded-2xl bg-brand-card hover:bg-slate-800/80 text-white font-bold text-center border border-brand-border hover:border-purple-500/50 transition hover:scale-[1.02]">
+                    <div class="text-xs text-slate-400 mb-1">سیستم‌عامل ویندوز</div>
+                    <div class="text-base font-extrabold flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.901-1.8"/></svg>
+                        <span>دانلود ویندوز (EXE)</span>
+                    </div>
+                    <div class="text-[11px] text-slate-400 mt-1">Windows 10 / 11 64-bit</div>
                 </a>
             </div>
 
-            <!-- UI Interactive Mockup / Player Showcase -->
-            <div class="mt-14 max-w-4xl mx-auto rounded-3xl p-3 glass-panel border border-brand-border shadow-2xl shadow-purple-950/40">
-                <div class="bg-[#0D0F17] rounded-2xl p-6 text-start">
-                    <div class="flex items-center justify-between pb-4 border-b border-slate-800/80">
-                        <div class="flex items-center gap-3">
-                            <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
-                            <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
-                            <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
-                            <span class="text-xs text-slate-400 ms-3 font-medium">پخش‌کننده حرفه‌ای ریک مووی (ZarFilm Mode)</span>
-                        </div>
-                        <span class="text-xs bg-emerald-500/15 text-emerald-400 font-bold px-2.5 py-1 rounded-md">پخش آنلاین فعال</span>
-                    </div>
-
-                    <!-- ZarFilm Quality Tabs Mockup -->
-                    <div class="mt-6">
-                        <div class="flex gap-3 mb-4">
-                            <button class="px-5 py-2.5 rounded-xl bg-brand-primary text-white text-xs font-bold flex items-center gap-2 shadow-md shadow-brand-primary/30">
-                                <span>زیرنویس چسبیده (سافت‌ساب)</span>
-                                <span class="bg-white/20 px-1.5 py-0.5 rounded text-[10px]">۵ کیفیت</span>
-                            </button>
-                            <button class="px-5 py-2.5 rounded-xl bg-brand-accent/20 text-brand-accent border border-brand-accent/40 text-xs font-bold flex items-center gap-2">
-                                <span>دوبله فارسی اختصاصی</span>
-                                <span class="bg-brand-accent/30 px-1.5 py-0.5 rounded text-[10px]">۳ کیفیت</span>
-                            </button>
-                        </div>
-
-                        <!-- Quality Rows -->
-                        <div class="space-y-2.5">
-                            <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/90 border border-slate-800">
-                                <div>
-                                    <div class="text-sm font-bold text-white">کیفیت 1080p Full HD (سرور پرسرعت داخلی)</div>
-                                    <div class="text-xs text-slate-400 mt-0.5">فرمت MP4 | استریم بدون وقفه | حجم: ۲.۱ گیگابایت</div>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <span class="bg-brand-primary text-white text-xs font-bold px-3 py-1.5 rounded-lg">پخش آنلاین</span>
-                                    <span class="bg-slate-800 text-slate-300 text-xs font-medium px-3 py-1.5 rounded-lg border border-slate-700">دانلود</span>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/90 border border-slate-800">
-                                <div>
-                                    <div class="text-sm font-bold text-white">کیفیت 720p HD (سرور بهینه)</div>
-                                    <div class="text-xs text-slate-400 mt-0.5">فرمت MP4 | مناسب اینترنت همراه | حجم: ۹۵۰ مگابایت</div>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <span class="bg-brand-primary text-white text-xs font-bold px-3 py-1.5 rounded-lg">پخش آنلاین</span>
-                                    <span class="bg-slate-800 text-slate-300 text-xs font-medium px-3 py-1.5 rounded-lg border border-slate-700">دانلود</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- OnlySub Box -->
-                        <div class="mt-5 p-4 rounded-xl bg-purple-950/30 border border-purple-800/40 flex items-center justify-between">
-                            <div class="flex items-center gap-3">
-                                <div class="w-8 h-8 rounded-lg bg-brand-primary/30 flex items-center justify-center text-brand-primary">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
-                                </div>
-                                <div>
-                                    <div class="text-xs font-extrabold text-purple-200">زیرنویس‌های اختصاصی پلتفرم OnlySub.ir</div>
-                                    <div class="text-[11px] text-purple-300/80">فونت بومی وزیرمتن | پوزیشنال گرافیکی Cinema ASS | بدون تبلیغات</div>
-                                </div>
-                            </div>
-                            <span class="text-xs text-brand-accent font-bold">اتصال زنده</span>
-                        </div>
-                    </div>
-                </div>
+            <!-- Shortlink Pill -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-400">
+                <span>لینک کوتاه دانلود مستقیم:</span>
+                <a href="https://B2n.ir/rickmovie-download" target="_blank" class="text-purple-400 hover:text-purple-300 font-bold underline dir-ltr">
+                    https://B2n.ir/rickmovie-download
+                </a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Features Grid -->
-        <section id="features" class="max-w-6xl mx-auto px-4 py-20 border-t border-brand-border/40">
-            <div class="text-center mb-16">
-                <h3 class="text-xs font-black text-brand-accent uppercase tracking-widest mb-2">امکانات مهندسی‌شده</h3>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">چرا ریک مووی متفاوت است؟</h2>
+    <!-- Key Features Grid -->
+    <section class="py-20 px-6 max-w-6xl mx-auto border-t border-brand-border">
+        <div class="text-center mb-16">
+            <h3 class="text-2xl md:text-3xl font-black text-white mb-3">قابلیت‌های برجسته ریک مووی</h3>
+            <p class="text-sm text-slate-400">طراحی شده برای بیشترین سرعت، سهولت استفاده و تجربه سینمایی بی‌نقص</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Feature 1 -->
+            <div class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-purple-500/40 transition">
+                <div class="w-12 h-12 rounded-xl bg-purple-600/20 text-purple-400 flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </div>
+                <h4 class="text-lg font-bold text-white mb-2">موتور جستجوی بلادرنگ</h4>
+                <p class="text-sm text-slate-400 leading-relaxed">
+                    جستجوی آنی بدون وقفه با تایپ عنوان، نمایش ترندهای داغ روز، آرشیو کشورها، تاریخچه جستجوهای اخیر و تفکیک سریع فیلم و سریال.
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Card 1 -->
-                <div class="p-6 rounded-2xl glass-panel border border-brand-border hover:border-brand-primary/50 transition">
-                    <div class="w-12 h-12 rounded-xl bg-brand-primary/15 text-brand-primary flex items-center justify-center mb-5 font-bold">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
-                    </div>
-                    <h4 class="text-lg font-bold text-white mb-2.5">تفکیک کیفیت و دوبله (سبک زرفیلم)</h4>
-                    <p class="text-sm text-slate-400 leading-relaxed">
-                        دسته‌بندی منظم کیفیت‌های زیرنویس چسبیده و دوبله فارسی در دو زبانه تفکیک‌شده با رنگ‌بندی استاندارد جهت انتخاب آسان و سریع.
-                    </p>
+            <!-- Feature 2 -->
+            <div class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-orange-500/40 transition">
+                <div class="w-12 h-12 rounded-xl bg-orange-600/20 text-orange-400 flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
                 </div>
-
-                <!-- Card 2 -->
-                <div class="p-6 rounded-2xl glass-panel border border-brand-border hover:border-brand-primary/50 transition" id="subtitles">
-                    <div class="w-12 h-12 rounded-xl bg-purple-500/15 text-purple-400 flex items-center justify-center mb-5 font-bold">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
-                    </div>
-                    <h4 class="text-lg font-bold text-white mb-2.5">زیرنویس‌های اختصاصی OnlySub.ir</h4>
-                    <p class="text-sm text-slate-400 leading-relaxed">
-                        اتصال به پلتفرم رسمی OnlySub.ir جهت بارگذاری مستقیم زیرنویس‌های تمیز بدون تبلیغات، نسخه سینمایی ASS با فونت وزیرمتن و نسخه سپر خانوادگی.
-                    </p>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="p-6 rounded-2xl glass-panel border border-brand-border hover:border-brand-primary/50 transition">
-                    <div class="w-12 h-12 rounded-xl bg-brand-accent/15 text-brand-accent flex items-center justify-center mb-5 font-bold">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                    </div>
-                    <h4 class="text-lg font-bold text-white mb-2.5">دانلودر مستقل درون‌برنامه‌ای</h4>
-                    <p class="text-sm text-slate-400 leading-relaxed">
-                        دانلود مستقیم فیلم‌ها و سریال‌ها در پس‌زمینه با نوتیفیکیشن اختصاصی اندروید، امکان توقف و ادامه (Pause/Resume) و تماشای آفلاین بدون اینترنت.
-                    </p>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="p-6 rounded-2xl glass-panel border border-brand-border hover:border-brand-primary/50 transition">
-                    <div class="w-12 h-12 rounded-xl bg-blue-500/15 text-blue-400 flex items-center justify-center mb-5 font-bold">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    </div>
-                    <h4 class="text-lg font-bold text-white mb-2.5">سیستم ادامه تماشا (Resume Watching)</h4>
-                    <p class="text-sm text-slate-400 leading-relaxed">
-                        ذخیره ثانیه‌شمار دقیق پخش برای تمامی آثار؛ در ورود بعدی به سادگی با زدن دکمه «ادامه از زمان قبل» فیلم را از همان لحظه تماشا کنید.
-                    </p>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="p-6 rounded-2xl glass-panel border border-brand-border hover:border-brand-primary/50 transition">
-                    <div class="w-12 h-12 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center mb-5 font-bold">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
-                    </div>
-                    <h4 class="text-lg font-bold text-white mb-2.5">هماهنگ‌ساز میلی‌ثانیه‌ای صدا و زیرنویس</h4>
-                    <p class="text-sm text-slate-400 leading-relaxed">
-                        دیالوگ تنظیم تاخیر درون پلیر با گام‌های ۱۰۰ میلی‌ثانیه‌ای (+ / -) برای تنظیم دقیق زیرنویس و صدای دوبله با تصویر بدون اختلال.
-                    </p>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="p-6 rounded-2xl glass-panel border border-brand-border hover:border-brand-primary/50 transition" id="tv">
-                    <div class="w-12 h-12 rounded-xl bg-rose-500/15 text-rose-400 flex items-center justify-center mb-5 font-bold">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    </div>
-                    <h4 class="text-lg font-bold text-white mb-2.5">پشتیبانی اختصاصی از Android TV</h4>
-                    <p class="text-sm text-slate-400 leading-relaxed">
-                        سازگاری کامل با ریموت کنترل تلویزیون‌های هوشمند، ناوبری با کلیدهای D-Pad، منوی سایدبار و پخش سینمایی تمام‌صفحه بدون حاشیه.
-                    </p>
-                </div>
+                <h4 class="text-lg font-bold text-white mb-2">تفکیک زرفیلمی زبان اصلی و دوبله</h4>
+                <p class="text-sm text-slate-400 leading-relaxed">
+                    تفکیک دقیق تب‌های کیفیت‌های زیرنویس چسبیده و دوبله فارسی اختصاصی همراه با اطلاعات بیت‌ریت، سورس و حجم دقیق هر فایل.
+                </p>
             </div>
-        </section>
 
-        <!-- Creator & Architecture Section -->
-        <section id="creator" class="max-w-4xl mx-auto px-4 py-16 text-center">
-            <div class="p-8 sm:p-12 rounded-3xl glass-panel border border-brand-border text-start">
-                <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
-                    <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-brand-primary via-purple-700 to-brand-accent p-1 flex-shrink-0 shadow-lg shadow-brand-primary/25">
-                        <img src="logo.png" alt="Rick Movie Logo" class="w-full h-full object-contain rounded-xl p-1 bg-[#0E1017]">
-                    </div>
-                    <div>
-                        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-brand-primary/15 text-brand-primary text-xs font-bold mb-2">
-                            معمار و تنها سازنده نرم‌افزار
-                        </div>
-                        <h3 class="text-2xl font-extrabold text-white mb-2">ریک سانچز (Rick Sanchez)</h3>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-4">
-                            طراحی و پیاده‌سازی زیرساخت استریم، تفکیک کیفیت‌های نودها، مهندسی معکوس و اتصال به سرویس زیرنویس OnlySub منحصراً توسط ریک سانچز به عنوان یک پروژه اختصاصی، تجاری و محرمانه (Proprietary / Closed Source) انجام گرفته است. این نرم‌افزار به هیچ عنوان اوپن‌سورس نیست.
-                        </p>
-                        <p class="text-xs text-slate-400">
-                            نسخه فعال: Beta 2.0.0 | کدنویسی شده با Kotlin و Jetpack Compose | تمامی حقوق محفوظ است.
-                        </p>
-                    </div>
+            <!-- Feature 3 -->
+            <div class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-emerald-500/40 transition">
+                <div class="w-12 h-12 rounded-xl bg-emerald-600/20 text-emerald-400 flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/></svg>
                 </div>
+                <h4 class="text-lg font-bold text-white mb-2">اتصال مستقیم به OnlySub.ir</h4>
+                <p class="text-sm text-slate-400 leading-relaxed">
+                    تغذیه بلادرنگ زیرنویس‌های فارسی و انگلیسی رسمی از سرورهای آنلی‌ساب با فیلتر تبلیغات، تنظیم دقیق تایمینگ و استایل وزیرمتن.
+                </p>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="border-t border-brand-border/60 py-8 relative z-10 glass-panel">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+    <footer class="py-10 px-6 border-t border-brand-border text-center text-xs text-slate-500">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             <div class="flex items-center gap-2">
-                <span class="font-bold text-white">ریک مووی (Rick Movie)</span>
-                <span>: نسخه آزمایشی بتا</span>
+                <img src="logo.png" class="w-6 h-6 rounded-lg" alt="Logo">
+                <span class="font-bold text-slate-300">ریک مووی (Rick Movie)</span>
             </div>
             <div>
-                © 2026 Rick Movie. تمامی حقوق مادی و معنوی منحصراً متعلق به ریک سانچز است.
+                <span>توسعه‌دهنده و معمار اختصاصی: </span>
+                <span class="text-purple-400 font-bold">ریک سانچز (Rick Sanchez)</span>
+            </div>
+            <div class="text-[11px] text-slate-600">
+                تمامی حقوق محفوظ است © ۲۰۲۶
             </div>
         </div>
     </footer>
